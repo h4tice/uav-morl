@@ -1,0 +1,121 @@
+experiment:
+  name: uav_morl_v1
+  seed: 42
+  n_seeds: 3
+  device: auto
+env:
+  arena_size:
+  - 60.0
+  - 60.0
+  - 20.0
+  dt: 0.2
+  max_steps: 400
+  goal_threshold: 2.0
+  min_start_goal_dist: 40.0
+  uav_radius: 0.5
+  v_max: 8.0
+  a_max: 4.0
+  drag: 0.05
+  n_rays: 16
+  sensor_range: 15.0
+  battery_capacity_j: 60000.0
+  obstacles:
+    count: 10
+    radius_range:
+    - 1.5
+    - 3.5
+    speed_range:
+    - 0.5
+    - 2.5
+    dynamic_fraction: 0.7
+  energy:
+    p0: 79.86
+    pi: 88.63
+    u_tip: 120.0
+    v0: 4.03
+    d0: 0.6
+    rho: 1.225
+    s: 0.05
+    a: 0.503
+    mass: 2.0
+  reward:
+    weights:
+    - 0.6
+    - 0.2
+    - 0.2
+    randomize_weights: true
+    include_weights_in_obs: true
+    k_progress: 1.0
+    k_energy: 1.0
+    k_safety: 1.0
+    danger_radius: 3.0
+    goal_bonus: 50.0
+    collision_penalty: -50.0
+    timeout_penalty: -10.0
+    step_penalty: 0.02
+    energy_scale: 0.3
+training:
+  algorithm: PPO
+  total_timesteps: 1000000
+  n_envs: 8
+  eval_freq: 25000
+  n_eval_episodes: 20
+  checkpoint_freq: 100000
+  ppo:
+    learning_rate: 0.0003
+    n_steps: 2048
+    batch_size: 256
+    n_epochs: 10
+    gamma: 0.99
+    gae_lambda: 0.95
+    clip_range: 0.2
+    ent_coef: 0.005
+    policy_kwargs:
+      net_arch:
+      - 256
+      - 256
+  sac:
+    learning_rate: 0.0003
+    buffer_size: 500000
+    batch_size: 256
+    gamma: 0.99
+    tau: 0.005
+    train_freq: 1
+    gradient_steps: 1
+    learning_starts: 10000
+    policy_kwargs:
+      net_arch:
+      - 256
+      - 256
+evaluation:
+  n_episodes: 100
+  pareto_weights:
+  - - 0.8
+    - 0.1
+    - 0.1
+  - - 0.6
+    - 0.2
+    - 0.2
+  - - 0.5
+    - 0.4
+    - 0.1
+  - - 0.5
+    - 0.1
+    - 0.4
+  - - 0.4
+    - 0.3
+    - 0.3
+  - - 0.33
+    - 0.33
+    - 0.34
+  - - 0.2
+    - 0.6
+    - 0.2
+  - - 0.2
+    - 0.2
+    - 0.6
+paths:
+  models: results/models
+  logs: results/logs
+  figures: results/figures
+  metrics: results/metrics

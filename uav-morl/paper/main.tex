@@ -1,0 +1,93 @@
+% =====================================================================
+% An End-to-End Multi-Objective Reinforcement Learning Framework for
+% UAV Path Planning with Dynamic Obstacle Avoidance and Energy Efficiency
+% IEEE iskeleti — Overleaf'e kopyalayip kullanabilirsiniz.
+% =====================================================================
+\documentclass[journal]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,graphicx,booktabs,cite,url,algorithm,algorithmic}
+\graphicspath{{figures/}}
+
+\begin{document}
+
+\title{An End-to-End Multi-Objective Reinforcement Learning Framework for
+UAV Path Planning with Dynamic Obstacle Avoidance and Energy Efficiency}
+
+\author{Ad~SOYAD,~\IEEEmembership{}% TODO
+\thanks{A. Soyad, Bölüm, Üniversite, Şehir, Türkiye (e-posta: ...).}}
+
+\maketitle
+
+\begin{abstract}
+% TODO: paper/makale_taslagi.md'deki özeti sonuçlarla doldurup çevirin.
+\end{abstract}
+
+\begin{IEEEkeywords}
+UAV, path planning, multi-objective reinforcement learning, dynamic obstacle
+avoidance, energy efficiency, Pareto optimization.
+\end{IEEEkeywords}
+
+\section{Introduction}
+% Motivasyon, boşluk, katkılar (bkz. taslak §1)
+
+\section{Related Work}
+\subsection{Classical Path Planning}
+\subsection{RL-Based UAV Navigation}
+\subsection{Multi-Objective Reinforcement Learning}
+\subsection{UAV Energy Models}
+
+\section{Problem Formulation}
+We model the task as a multi-objective MDP
+$\mathcal{M}=(\mathcal{S},\mathcal{A},P,\mathbf{r},\gamma)$ with
+$\mathbf{r}(s,a)=[r_{\text{goal}},r_{\text{energy}},r_{\text{safety}}]^\top$.
+
+\subsection{UAV Kinematics}
+\begin{equation}
+\mathbf{v}_{t+1}=(1-\lambda)\mathbf{v}_t+\mathbf{a}_t\Delta t,\qquad
+\|\mathbf{v}\|\le v_{\max},\ \|\mathbf{a}\|_\infty\le a_{\max}.
+\end{equation}
+
+\subsection{Propulsion Energy Model}
+Following Zeng \emph{et al.}~\cite{zeng2019energy}:
+\begin{equation}
+\begin{aligned}
+P(V)={}&P_0\!\left(1+\frac{3V^2}{U_{\mathrm{tip}}^2}\right)
++P_i\!\left(\sqrt{1+\frac{V^4}{4v_0^4}}-\frac{V^2}{2v_0^2}\right)^{\!1/2}\\
+&+\tfrac12 d_0\rho s A V^3 + mg[V_z]^+ .
+\end{aligned}
+\end{equation}
+
+\subsection{Reward Vector and Scalarization}
+\begin{equation}
+R_t=\mathbf{w}^\top\mathbf{r}_t,\qquad \mathbf{w}\sim\mathrm{Dirichlet}(\mathbf{1})
+\ \text{(training)}.
+\end{equation}
+
+\section{Proposed Framework}
+\subsection{Preference-Conditioned Policy}
+\subsection{Learning Algorithms}
+\subsection{Classical Baselines}
+
+\section{Experimental Setup}
+% Arena, engeller, metrikler, hiperparametre tabloları
+
+\section{Results and Discussion}
+% Tablo/şekiller: results/figures ve results/metrics'ten
+\begin{figure}[t]\centering
+\includegraphics[width=\columnwidth]{pareto_front.png}
+\caption{Approximate Pareto front obtained from a single preference-conditioned policy.}
+\end{figure}
+
+\section{Conclusion}
+
+\bibliographystyle{IEEEtran}
+\begin{thebibliography}{9}
+\bibitem{zeng2019energy} Y. Zeng, J. Xu, and R. Zhang, ``Energy minimization for wireless communication with rotary-wing UAV,'' \emph{IEEE Trans. Wireless Commun.}, vol.~18, no.~4, pp. 2329--2345, 2019.
+\bibitem{schulman2017ppo} J. Schulman \emph{et al.}, ``Proximal policy optimization algorithms,'' arXiv:1707.06347, 2017.
+\bibitem{haarnoja2018sac} T. Haarnoja \emph{et al.}, ``Soft actor-critic,'' in \emph{Proc. ICML}, 2018.
+\bibitem{khatib1986apf} O. Khatib, ``Real-time obstacle avoidance for manipulators and mobile robots,'' \emph{Int. J. Robot. Res.}, 1986.
+\bibitem{raffin2021sb3} A. Raffin \emph{et al.}, ``Stable-Baselines3: Reliable reinforcement learning implementations,'' \emph{JMLR}, 2021.
+\bibitem{yang2019envelope} R. Yang, X. Sun, and K. Narasimhan, ``A generalized algorithm for multi-objective reinforcement learning and policy adaptation,'' in \emph{Proc. NeurIPS}, 2019.
+\end{thebibliography}
+
+\end{document}

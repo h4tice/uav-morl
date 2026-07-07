@@ -1,0 +1,17 @@
+# Core scientific stack
+numpy>=1.26
+pandas>=2.0
+matplotlib>=3.8
+seaborn>=0.13
+pyyaml>=6.0
+
+# RL
+gymnasium>=0.29
+stable-baselines3>=2.3
+torch>=2.2
+tensorboard>=2.16
+tqdm>=4.66
+rich>=13.0
+
+# Testing
+pytest>=8.0

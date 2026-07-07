@@ -1,0 +1,18 @@
+﻿venv/
+env/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.vscode/
+.idea/
+.env
+
+results/models/
+results/logs/
+results/logs_final/
+*.zip
+
+# Tensorboard event dosyaları
+events.out.tfevents.*

@@ -1,0 +1,16 @@
+{
+  "n_episodes": 100,
+  "success_rate": 0.82,
+  "collision_rate": 0.18,
+  "timeout_rate": 0.0,
+  "path_length_m_mean": 51.796852650357714,
+  "path_length_m_std": 8.696037738053613,
+  "path_efficiency_mean": 0.9356843669776869,
+  "path_efficiency_std": 0.09926806521575658,
+  "energy_j_mean": 675.508009556324,
+  "energy_j_std": 207.9449073313482,
+  "energy_per_meter_j_mean": 12.89149959514403,
+  "energy_per_meter_j_std": 2.3602094590138267,
+  "flight_time_s_mean": 4.263414634146343,
+  "flight_time_s_std": 1.1893339184358358
+}
